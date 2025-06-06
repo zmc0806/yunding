@@ -2,8 +2,7 @@
   import { onMount } from 'svelte';
 
   const completeIndustryData = [
-    {industry: '服装', companies: 133, users: 12136, activeUsers: 5523, devices: 52457, faceDevices: 8688, huinaDevices: 3033, stores: 9158, marketShare: 20.2, activeRate: 45.5},
-    {industry: '鞋服', companies: 129, users: 13316, activeUsers: 6255, devices: 55539, faceDevices: 10409, huinaDevices: 5182, stores: 9946, marketShare: 19.6, activeRate: 47.0},
+    {industry: '鞋服',companies: 262,users: 25452,activeUsers: 11778,devices: 107996,faceDevices: 19097,huinaDevices: 8215,stores: 19104,marketShare: 39.8,activeRate: 46.3},
     {industry: '餐饮', companies: 117, users: 8376, activeUsers: 3834, devices: 31288, faceDevices: 88, huinaDevices: 52, stores: 8120, marketShare: 17.8, activeRate: 45.8},
     {industry: '家居', companies: 28, users: 4253, activeUsers: 663, devices: 38107, faceDevices: 157, huinaDevices: 621, stores: 9287, marketShare: 4.3, activeRate: 15.6},
     {industry: '商超', companies: 24, users: 2437, activeUsers: 1143, devices: 8590, faceDevices: 317, huinaDevices: 117, stores: 1956, marketShare: 3.6, activeRate: 46.9},
@@ -103,28 +102,27 @@
   };
 </script>
 
-<!-- 完全移除包装器，直接输出内容 -->
-<!-- 标题已经在App.svelte中处理，这里只输出表格功能 -->
-
-<!-- 统计概览 -->
-<div class="summary-stats">
-  <div class="summary-item">
-    <span class="summary-value">{summary.totalIndustries}</span>
-    <span class="summary-label">行业数量</span>
+<!-- 确保这个div占满整个父容器 -->
+<div class="table-content-wrapper">
+  <!-- 统计概览 -->
+  <div class="summary-stats">
+    <div class="summary-item">
+      <span class="summary-value">{summary.totalIndustries}</span>
+      <span class="summary-label">行业数量</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-value">{formatNumber(summary.totalCompanies)}</span>
+      <span class="summary-label">企业总数</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-value">{formatNumber(summary.totalUsers)}</span>
+      <span class="summary-label">用户总数</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-value">{summary.avgActiveRate}%</span>
+      <span class="summary-label">平均活跃率</span>
+    </div>
   </div>
-  <div class="summary-item">
-    <span class="summary-value">{formatNumber(summary.totalCompanies)}</span>
-    <span class="summary-label">企业总数</span>
-  </div>
-  <div class="summary-item">
-    <span class="summary-value">{formatNumber(summary.totalUsers)}</span>
-    <span class="summary-label">用户总数</span>
-  </div>
-  <div class="summary-item">
-    <span class="summary-value">{summary.avgActiveRate}%</span>
-    <span class="summary-label">平均活跃率</span>
-  </div>
-</div>
 
   <!-- 表格控制区域 -->
   <div class="table-controls">
@@ -367,9 +365,18 @@
       </button>
     </div>
   {/if}
+</div>
 
 <style>
-  /* 移除包装器样式，直接使用内容样式 */
+  /* 最外层包装器 - 强制占满父容器 */
+  .table-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0; /* 允许收缩 */
+  }
 
   .summary-stats {
     display: flex;
@@ -378,7 +385,6 @@
     border-radius: 10px;
     padding: 15px;
     border: 1px solid #e2e8f0;
-    margin-bottom: 20px;
     width: 100%;
     box-sizing: border-box;
   }
@@ -388,6 +394,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    flex: 1;
   }
 
   .summary-value {
@@ -409,11 +416,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
     gap: 20px;
     flex-wrap: wrap;
     width: 100%;
-    box-sizing: border-box;
   }
 
   .search-section {
@@ -421,6 +426,7 @@
     align-items: center;
     gap: 15px;
     flex: 1;
+    min-width: 300px;
   }
 
   .search-input {
@@ -430,10 +436,9 @@
     font-size: 14px;
     outline: none;
     transition: all 0.3s ease;
-    min-width: 250px;
-    max-width: 100%;
+    flex: 1;
+    max-width: 400px;
     background: white;
-    box-sizing: border-box;
   }
 
   .search-input:focus {
@@ -483,32 +488,29 @@
     outline: none;
   }
 
-  /* 表格样式 */
+  /* 表格样式 - 关键：确保表格填满整个宽度 */
   .table-wrapper {
     flex: 1;
+    width: 100%;
     max-height: 600px;
-    overflow-x: auto; /* 水平滚动 */
-    overflow-y: auto; /* 垂直滚动 */
+    overflow: auto;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
-    margin-bottom: 20px;
-    width: 100%; /* 确保表格宽度100% */
-    box-sizing: border-box;
+    background: white;
   }
 
   .data-table {
     width: 100%;
-    min-width: 1200px; /* 设置最小宽度，确保表格足够宽 */
+    min-width: 100%; /* 强制最小宽度为100% */
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 13px;
     background: white;
-    table-layout: auto; /* 改回自动布局，让表格自然撑开 */
   }
 
   .data-table thead th {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    padding: 16px 8px; /* 减少水平padding让表格更宽 */
+    padding: 14px 10px;
     text-align: center;
     font-weight: 600;
     position: sticky;
@@ -516,8 +518,7 @@
     z-index: 10;
     white-space: nowrap;
     border-right: 1px solid rgba(255,255,255,0.2);
-    font-size: 12px; /* 稍微减小字体让内容更紧凑 */
-    min-width: 80px; /* 设置最小列宽 */
+    font-size: 12px;
   }
 
   .data-table thead th:last-child {
@@ -528,7 +529,6 @@
     cursor: pointer;
     user-select: none;
     transition: background-color 0.3s ease;
-    position: relative;
   }
 
   .sortable:hover {
@@ -537,9 +537,8 @@
 
   .sort-icon {
     margin-left: 5px;
-    font-size: 12px;
+    font-size: 11px;
     opacity: 0.7;
-    display: inline-block;
   }
 
   .sorted-asc .sort-icon,
@@ -554,7 +553,6 @@
 
   .data-row:hover {
     background-color: #f8f9ff;
-    transform: scale(1.005);
   }
 
   .top-row {
@@ -571,12 +569,11 @@
   }
 
   .data-table td {
-    padding: 14px 8px; /* 减少水平padding */
+    padding: 12px 10px;
     text-align: center;
     border-bottom: 1px solid #f1f5f9;
     border-right: 1px solid #f1f5f9;
-    font-size: 12px; /* 稍微减小字体 */
-    min-width: 80px; /* 设置最小列宽 */
+    font-size: 12px;
   }
 
   .data-table td:last-child {
@@ -586,29 +583,28 @@
   .rank-cell {
     font-weight: bold;
     color: #667eea;
-    position: relative;
-    min-width: 60px;
+    width: 60px;
   }
 
   .medal {
     margin-left: 5px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .industry-cell {
     text-align: left !important;
     font-weight: 600;
     color: #333;
-    min-width: 80px;
+    width: 80px;
   }
 
   .industry-name {
     display: inline-block;
-    padding: 6px 12px;
-    border-radius: 15px;
+    padding: 4px 8px;
+    border-radius: 12px;
     background: rgba(102, 126, 234, 0.1);
     color: #667eea;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
   }
 
@@ -617,34 +613,34 @@
     font-weight: 500;
     color: #555;
     white-space: nowrap;
+    width: 90px;
   }
 
   .percent-cell {
-    position: relative;
-    min-width: 120px;
+    width: 120px;
   }
 
   .percent-value {
     display: block;
     font-weight: bold;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     color: #333;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .percent-bar {
-    height: 8px;
+    height: 6px;
     background: #e2e8f0;
-    border-radius: 4px;
+    border-radius: 3px;
     overflow: hidden;
     margin: 0 auto;
-    width: 85%;
+    width: 80%;
   }
 
   .percent-fill {
     height: 100%;
     background: linear-gradient(90deg, #667eea, #764ba2);
-    border-radius: 4px;
+    border-radius: 3px;
     transition: width 0.8s ease;
   }
 
@@ -658,9 +654,8 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    padding: 20px 0;
+    padding: 15px 0;
     border-top: 1px solid #e2e8f0;
-    margin-top: auto;
   }
 
   .page-btn {
@@ -701,33 +696,23 @@
   }
 
   /* 响应式设计 */
-  @media (max-width: 1400px) {
+  @media (max-width: 1200px) {
     .summary-stats {
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 10px;
     }
     
     .summary-item {
-      min-width: 100px;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    .chart-container {
-      padding: 25px;
+      min-width: 120px;
     }
     
     .data-table {
-      font-size: 12px;
+      font-size: 11px;
     }
     
     .data-table th,
     .data-table td {
-      padding: 10px 8px;
-    }
-    
-    .chart-title {
-      font-size: 1.2rem;
+      padding: 8px 6px;
     }
   }
 
@@ -740,11 +725,12 @@
     
     .search-section {
       justify-content: space-between;
+      min-width: auto;
     }
     
     .search-input {
-      min-width: 200px;
       flex: 1;
+      max-width: none;
     }
     
     .control-group {
@@ -753,12 +739,12 @@
   }
 
   @media (max-width: 768px) {
-    .chart-container {
-      padding: 20px;
+    .table-content-wrapper {
+      gap: 15px;
     }
     
     .summary-stats {
-      grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
       gap: 10px;
     }
     
@@ -768,7 +754,6 @@
     }
     
     .search-input {
-      min-width: auto;
       width: 100%;
     }
     
@@ -777,12 +762,12 @@
     }
     
     .data-table {
-      font-size: 11px;
+      font-size: 10px;
     }
     
     .data-table th,
     .data-table td {
-      padding: 8px 6px;
+      padding: 6px 4px;
     }
     
     .pagination {
@@ -797,24 +782,12 @@
   }
 
   @media (max-width: 480px) {
-    .chart-container {
-      padding: 15px;
-    }
-    
     .summary-stats {
-      grid-template-columns: 1fr;
-    }
-    
-    .chart-title {
-      font-size: 1.1rem;
+      padding: 10px;
     }
     
     .table-wrapper {
       max-height: 400px;
-    }
-    
-    .data-table {
-      font-size: 10px;
     }
     
     .pagination {
@@ -824,6 +797,7 @@
     
     .page-info {
       order: -1;
+      margin: 0;
     }
   }
 
@@ -848,40 +822,32 @@
     background: #a0aec0;
   }
 
-  /* 加载动画 - 移除，由父容器处理 */
-  /* .data-table-wrapper {
-    animation: fadeInUp 0.6s ease forwards;
-  } */
-
   /* 高对比度模式支持 */
   @media (prefers-contrast: high) {
-    .search-input {
+    .search-input,
+    .page-select,
+    .page-btn {
       border-color: #000;
     }
     
     .page-btn {
-      border-color: #000;
       color: #000;
     }
   }
 
   /* 减少动画模式支持 */
   @media (prefers-reduced-motion: reduce) {
-    .data-row {
-      transition: none;
-    }
-    
-    .percent-fill {
+    .data-row,
+    .percent-fill,
+    .page-btn,
+    .search-input {
       transition: none;
     }
   }
 
   /* 打印样式 */
   @media print {
-    .table-controls {
-      display: none;
-    }
-    
+    .table-controls,
     .pagination {
       display: none;
     }
@@ -889,11 +855,17 @@
     .table-wrapper {
       max-height: none;
       overflow: visible;
+      border: 1px solid #000;
     }
     
     .data-table th {
       background: #f0f0f0 !important;
       color: #000 !important;
+    }
+    
+    .summary-stats {
+      border: 1px solid #000;
+      background: #f9f9f9;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 export const industryData = [
-  {name: '服装', companies: 133, users: 12136, activeUsers: 3662, devices: 52457, activeRate: 30.2},
-  {name: '鞋服', companies: 129, users: 13316, activeUsers: 4085, devices: 55539, activeRate: 30.7},
+
+  {name: '鞋服',companies: 262,users: 25452,activeUsers: 7747,devices: 107996,activeRate: 30.4},
   {name: '餐饮', companies: 117, users: 8376, activeUsers: 2512, devices: 31288, activeRate: 30.0},
   {name: '家居', companies: 28, users: 4253, activeUsers: 1269, devices: 38107, activeRate: 29.8},
   {name: '商超', companies: 24, users: 2437, activeUsers: 725, devices: 8590, activeRate: 29.7},

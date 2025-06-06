@@ -6,7 +6,6 @@
   import YearlyGrowth from './lib/components/YearlyGrowth.svelte';
   import ActivityScatter from './lib/components/ActivityScatter.svelte';
   import DeviceBar from './lib/components/DeviceBar.svelte';
-  import UserBubble from './lib/components/UserBubble.svelte';
   import UserArea from './lib/components/UserArea.svelte';
 </script>
 
