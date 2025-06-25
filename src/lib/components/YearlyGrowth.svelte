@@ -348,7 +348,22 @@
 
   <div class="tooltip" bind:this={tooltip}></div>
 </div>
+<!-- 新增：趋势分析 -->
+<div class="trend-analysis">
 
+  <div class="trend-insights">
+    <div class="phase-analysis">
+      <h5>发展阶段</h5>
+      <div class="phases">
+
+      </div>
+    </div>
+    <div class="key-insights">
+      <p><strong>🎯 关键发现：</strong>2025年虽然新增企业数量有所放缓（50家），但用户活跃率达到历史最高的59.3%。</p>
+      <p><strong>📊 增长动力：</strong>2021-2024年新增企业数量达到峰值。</p>
+    </div>
+  </div>
+</div>
 <style>
   .yearly-growth {
     width: 100%;
@@ -537,5 +552,57 @@
       width: 200px;
       justify-content: center;
     }
+  }
+
+
+  /* 分析结论通用样式 */
+  .insights-section,
+  .analysis-conclusion,
+  .distribution-analysis,
+  .trend-analysis,
+  .activity-insights,
+  .deployment-analysis,
+  .growth-insights {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: blur(10px);
+  }
+
+  .insights-title,
+  .conclusion-title,
+  .analysis-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .insight-item,
+  .conclusion-card {
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid #667eea;
+  }
+
+  .finding-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .highlight {
+    border-left: 3px solid #f56565;
+    background: #fff5f5;
   }
 </style>

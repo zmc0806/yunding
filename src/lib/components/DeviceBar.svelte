@@ -354,6 +354,26 @@
     </div>
   </div>
 
+  <!-- 新增：设备部署分析 -->
+<div class="deployment-analysis">
+  <h4 class="analysis-title"> 设备部署</h4>
+  <div class="deployment-insights">
+    <div class="efficiency-analysis">
+      
+      <div class="efficiency-metrics">
+  
+        <div class="metric-item">
+
+        </div>
+      </div>
+    </div>
+    <div class="deployment-pattern">
+    
+      <p><strong>📈 </strong>多数行业设备密度低于平均值，存在较大的设备部署空间。</p>
+    </div>
+  </div>
+</div>
+
   <div class="tooltip" bind:this={tooltip}></div>
 </div>
 
@@ -664,5 +684,57 @@
     .controls-panel {
       padding: 15px;
     }
+  }
+
+
+  /* 分析结论通用样式 */
+  .insights-section,
+  .analysis-conclusion,
+  .distribution-analysis,
+  .trend-analysis,
+  .activity-insights,
+  .deployment-analysis,
+  .growth-insights {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: blur(10px);
+  }
+
+  .insights-title,
+  .conclusion-title,
+  .analysis-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .insight-item,
+  .conclusion-card {
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid #667eea;
+  }
+
+  .finding-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .highlight {
+    border-left: 3px solid #f56565;
+    background: #fff5f5;
   }
 </style>

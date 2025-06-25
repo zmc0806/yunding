@@ -150,6 +150,7 @@
         .attr('opacity', 1);
     }
   }
+  
 </script>
 
 <div class="industry-distribution">
@@ -213,6 +214,29 @@
       {/each}
     </div>
   </div>
+
+  <!-- 新增：分布分析 -->
+<div class="distribution-analysis">
+  <div class="analysis-header">
+    <h4>📊 行业分布分析</h4>
+  </div>
+  <div class="analysis-content">
+    <div class="key-findings">
+      <div class="finding-item highlight">
+        <span class="finding-label">市场集中度</span>
+        <span class="finding-value">前三大行业占比 64.9%</span>
+      </div>
+      <div class="finding-item">
+        <span class="finding-label">头部效应</span>
+        <span class="finding-value">鞋服行业一家独大，占比 39.8%</span>
+      </div>
+    </div>
+    <div class="insights-text">
+      <p><strong>集中化趋势明显：</strong>鞋服行业以262家企业领跑。餐饮、家居紧随其后。</p>
+      <p><strong>新兴领域机会：</strong>潮玩、医美、摩托等新兴细分领域虽占比较小，但增长潜力大。</p>
+    </div>
+  </div>
+</div>
 
   <div class="tooltip" bind:this={tooltip}></div>
 </div>
@@ -454,5 +478,57 @@
     .industry-name {
       font-size: 1rem;
     }
+  }
+
+
+  /* 分析结论通用样式 */
+  .insights-section,
+  .analysis-conclusion,
+  .distribution-analysis,
+  .trend-analysis,
+  .activity-insights,
+  .deployment-analysis,
+  .growth-insights {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: blur(10px);
+  }
+
+  .insights-title,
+  .conclusion-title,
+  .analysis-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .insight-item,
+  .conclusion-card {
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid #667eea;
+  }
+
+  .finding-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .highlight {
+    border-left: 3px solid #f56565;
+    background: #fff5f5;
   }
 </style>

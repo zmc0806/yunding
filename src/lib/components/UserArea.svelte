@@ -14,7 +14,7 @@
     absolute: {
       title: '数值趋势',
       icon: '📊',
-      description: '显示用户数量的绝对值变化'
+      description: '用户数量变化'
     },
 
   };
@@ -498,6 +498,8 @@
 
 
 </div>
+
+
 
 <style>
   .user-area {

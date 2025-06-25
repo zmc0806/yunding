@@ -376,7 +376,29 @@
       {/each}
     </div>
   </div>
+<!-- 新增：活跃度洞察 -->
+  <div class="activity-insights">
+    <h4 class="insights-title">🎯 用户活跃度洞察</h4>
+    <div class="quadrant-analysis">
 
+      <div class="quadrants">
+        <div class="quadrant high-user-high-active">
+    
+          <p><strong>鞋服</strong>：用户规模大且活跃度高，是平台的核心价值行业</p>
+        </div>
+        <div class="quadrant low-user-high-active">
+          <h6> 潜力行业</h6>
+          <p><strong>医美、医药</strong>：用户基数小但活跃度极高，具有高价值用户特征</p>
+        </div>
+        <div class="quadrant high-user-low-active">
+          <h6>待激活行业</h6>
+          <p><strong>家居、汽车</strong>：用户基数大但活跃度偏低，需要重点运营</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
   <div class="tooltip" bind:this={tooltip}></div>
 </div>
 
@@ -645,5 +667,55 @@
       padding: 15px;
       min-height: 500px;
     }
+  }
+  /* 分析结论通用样式 */
+  .insights-section,
+  .analysis-conclusion,
+  .distribution-analysis,
+  .trend-analysis,
+  .activity-insights,
+  .deployment-analysis,
+  .growth-insights {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: blur(10px);
+  }
+
+  .insights-title,
+  .conclusion-title,
+  .analysis-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .insight-item,
+  .conclusion-card {
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid #667eea;
+  }
+
+  .finding-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .highlight {
+    border-left: 3px solid #f56565;
+    background: #fff5f5;
   }
 </style>

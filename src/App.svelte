@@ -7,6 +7,7 @@
   import ActivityScatter from './lib/components/ActivityScatter.svelte';
   import DeviceBar from './lib/components/DeviceBar.svelte';
   import UserArea from './lib/components/UserArea.svelte';
+  import StoreScaleAnalysis from './lib/components/StoreScaleAnalysis.svelte';
 </script>
 
 <main class="dashboard">
@@ -49,10 +50,11 @@
       </div>
 
 
-      <!-- 年度用户增长面积图 - 单独一行 -->
+
+      <!-- 在 App.svelte 中添加 -->
       <div class="chart-container chart-item full-width">
-        <h3 class="chart-title">📊 年度用户增长面积图</h3>
-        <UserArea />
+        <h3 class="chart-title">🏪 门店规模分级分析</h3>
+        <StoreScaleAnalysis />
       </div>
     </div>
   </section>
